@@ -1,45 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_sample/hive_repository.dart';
+import 'package:hive_sample/sample_1/hive_repository.dart';
 
-Future main() async {
-  // Hive 初期化
-  await Hive.initFlutter();
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-  // Boxインスタンスの取得
-  intBox = await hiveRepository.openIntBox();
-  boolBox = await hiveRepository.openBoolBox();
-  listBox = await hiveRepository.openListBox();
-  mapBox = await hiveRepository.openMapBox();
-
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Hive Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Hive Demo Page'),
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   late int _counter;
   final mailController = TextEditingController();
   final nameController = TextEditingController();
@@ -68,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Hive Sample 1'),
       ),
       body: Column(
         children: [
